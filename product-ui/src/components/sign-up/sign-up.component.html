@@ -1,0 +1,52 @@
+<h1 align="center"> Sign Up Here! </h1>
+<div align="center" *ngIf="isError">
+  <span style="color: red">{{errorMessage}}</span>
+</div>
+<form [formGroup]="signupForm">
+  <div class="form-container">
+    <div class="form-input">
+      <label>Name</label>
+      <input type="text" class="form-control" formControlName="name" placeholder="Name" />
+    </div>
+    <div class="form-input">
+        <label>Gender</label>
+      <input type="text" class="form-control" formControlName="gender" placeholder="Gender" />
+    </div>
+    <div class="form-input">
+        <label>User Name<span style="color: red">*</span></label>
+      <input type="text" class="form-control" formControlName="email" placeholder="Email" />
+      <label class="note-txt">
+        Format: xxx@yyy.zzz
+      </label>
+    </div>
+    <div class="form-input">
+        <label>Address</label>
+      <input type="text" class="form-control" formControlName="address" placeholder="Address" />
+    </div>
+    <div class="form-input">
+        <label>Phone Number</label>
+      <input type="text" class="form-control" formControlName="phone" placeholder="Phone Number" />
+      <label class="note-txt">
+        Format: Country code, follwed by number +19999999999,
+      </label>
+    </div>
+    <div class="form-input">
+        <label>Preferred UserName</label>
+      <input type="text" class="form-control" formControlName="preferredUserName" placeholder="Preferred UserName">
+    </div>
+    <div class="form-input">
+        <label>Password<span style="color: red">*</span></label>
+      <input type="password" class="form-control" formControlName="password" placeholder="Password">
+      <br/>
+      <label class="note-txt">
+        Should contain Mix of Upper Case, Lower Case,Special Character and Number.Length should be greater than 6
+      </label>
+    </div>
+    <div class="form-input">
+        <label>Updated At</label>
+      <input type="text" class="form-control" formControlName="updatedAt" placeholder="Updated At">
+    </div>
+    <div class="sign-up">
+        <button class="btn-primary" (click)="signUp()"> SIGN UP</button>
+        <p>Already have an account? (<a routerLink="/login">Login</a>)</p>
+    </div>

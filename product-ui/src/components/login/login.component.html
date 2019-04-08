@@ -1,0 +1,18 @@
+<div class="login-container">
+  <h1 align="center"> Login</h1>
+  <div align="center" *ngIf="isError">
+    <span style="color: red">{{errorMessage}}</span>
+  </div>
+  <form [formGroup]="loginForm">
+    <div>
+      <input type="text" class="form-control" formControlName="userName" placeholder="email" />
+    </div>
+    <div class="mrg-top15">
+      <input type="password" class="form-control" formControlName="password" placeholder="password">
+    </div>
+    <div align="center" class="mrg-top15">
+      <button class="btn-primary  mrg-rt15" (click)="login()">LOGIN</button>
+      <!-- <button class="btn-secondary" (click)="signUp()"> SIGN UP HERE!</button> -->
+    </div>
+  </form>
+</div>

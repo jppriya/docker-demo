@@ -1,0 +1,18 @@
+<header>
+    <div class="container">
+        <div class="brand-logo">
+        </div>
+        <div class="user-profile" *ngIf="!!name">
+            <ul>
+                <li> Welcome {{name}}</li>
+                <li (click)="gotoCart()">
+                    <img src="../assets/images/cart.png">
+                    <span class="cart-count" >{{count}}</span>
+                </li>
+                <li>
+                    <img src="../assets/images/power-off.png" (click)="logout()">
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>

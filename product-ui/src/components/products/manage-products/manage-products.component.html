@@ -1,0 +1,48 @@
+<div class="eco-heading">
+  <div>
+    <h1>PRODUCT DETAILS</h1>
+  </div>
+  <div>
+    <button class="btn-primary" (click)="addProduct()">Add Product </button>
+  </div>
+</div>
+<div class="success-msg" *ngIf=!!successMessage>
+  {{successMessage}}
+</div>
+
+<table class="table">
+  <tr>
+    <th>Product Code</th>
+    <th>Product Name</th>
+    <th>Description</th>
+    <th>Cost</th>
+    <th>Quantity</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let product of products">
+    <td>
+      <a class="link" (click)="editProductDetails(product)">{{product.productId}}
+      
+      </a>
+    </td>
+    <td>
+      {{product.productName}}
+    </td>
+    <td>
+      {{product.productDesc}}
+    </td>
+    <td>
+      {{product.productCost}}
+    </td>
+    <td>
+      {{product.quantity}}
+    </td>
+    <td>
+      <button class="btn-secondary" (click)="addToCart(product)">Add to Cart</button>
+    </td>
+    <td>
+      <button class="btn-secondary" (click)="deleteProduct(product)">Delete</button>
+    </td>
+  </tr>
+</table>

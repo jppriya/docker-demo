@@ -1,0 +1,51 @@
+<div class="eco-heading">
+  <h1>Add or Remove Products</h1>
+</div>
+<div class="success-msg" *ngIf=!!successMessage>
+  {{successMessage}}
+</div>
+<table class="table" *ngIf="filteredProducts && filteredProducts.length > 0">
+  <tr>
+    <th>Product Code</th>
+    <th>Product Name</th>
+    <th>Description</th>
+    <th>Cost</th>
+    <th>Add/Remove</th>
+    <th>Total Amount</th>
+  </tr>
+  <tr *ngFor="let product of filteredProducts">
+    <td>
+      {{product.productId}}
+    </td>
+    <td>
+      {{product.productName}}
+    </td>
+    <td>
+      {{product.productDesc}}
+    </td>
+    <td>
+      {{product.productCost}}
+    </td>
+    <td>
+      <span (click)="increaseCount(product)"> + </span> {{product.quantity}}
+      <span (click)="decreaseCount(product)" *ngIf="product.quantity > 0"> - </span>
+    </td>
+    <td>
+      {{product.quantity * product.productCost}}
+    </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>Total :</td>
+    <td> {{total}}</td>
+  </tr>
+
+</table>
+
+<div align="center">
+  <button class="btn-primary  mrg-rt15" (click)="checkout()">Checkout</button>
+  <button class="btn-secondary mrg-btm15" (click)="gotoManage()"> Manage Product</button>
+</div>

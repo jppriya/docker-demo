@@ -1,0 +1,42 @@
+<div class="eco-heading">
+  <h1> Products Here! </h1>
+</div>
+<div class="success-msg" *ngIf=!!successMessage>
+  {{successMessage}}
+</div>
+<form [formGroup]="productForm">
+  <div class="form-container">
+    <div class="form-input">
+      <label>Product Code</label>
+      <input type="text" class="form-control" formControlName="productId" placeholder="Product Code" />
+    </div>
+    <div class="form-input">
+      <label>Product Name</label>
+      <input type="text" class="form-control" formControlName="productName" placeholder="Product Name" />
+    </div>
+    <div class="form-input">
+      <label>Product Description</label>
+      <input type="text" class="form-control" formControlName="productDesc" placeholder="Product Description" />
+    </div>
+    <div class="form-input">
+      <label>Cost</label>
+      <input type="text" class="form-control" formControlName="productCost" placeholder="Cost" />
+    </div>
+    <div class="form-input">
+      <label>Quantity</label>
+      <input type="text" class="form-control" formControlName="quantity" placeholder="Quantity" />
+    </div>
+  </div>
+</form>
+
+<div align="center" class="mrg-top15">
+  <span style="padding-left:10px" *ngIf="!isAdd">
+    <button align="center" class="btn-primary" (click)="addOrUpdateProduct()">Update </button>
+  </span>
+  <span style="padding-left:10px" *ngIf="isAdd">
+    <button class="btn-primary" align="center" (click)="addOrUpdateProduct()">Add</button>
+  </span>
+  <span style="padding-left:10px">
+    <button class="btn-secondary mrg-btm15" align="center" (click)="manageProducts()">Manage Products</button>
+  </span>
+</div>
