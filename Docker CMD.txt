@@ -1,0 +1,98 @@
+docker build -t ${tag_name} .
+docker build -t product-service:0.0.1 .
+
+docker run ${image_name}
+
+docker ps - to check running container
+
+docker images - to check the built images
+
+docker rmi ${image_name} - to remove the image_name}
+
+docker stop ${container_id} - to stop the container
+
+docker rm ${container_id} - to remove the container
+
+docker run -it -p 9001:8000 --name product-service -d product-service:0.0.1
+docker run -it -p 9001:8000 --name product-service -d product-service:0.0.1
+-it is short for --interactive + --tty when you docker run with this command.. it would take you straight inside of the container
+
+***********Product-Service*************
+
+docker stop product-service
+docker rm product-service
+docker rmi product-service:0.0.1
+docker build -t product-service:0.0.1 .
+docker run -p 9090:8090 --name product-service -d product-service:0.0.1
+
+***********Product-UI**************
+
+docker stop product-ui
+docker rm product-ui
+docker rmi product-ui:0.0.1
+docker build -t product-ui:0.0.1 .
+docker run -p 80:80 --name product-ui product-ui:0.0.1
+
+***********TAG & Push to REPO ************
+docker login docker.io
+
+docker tag ${source_image} ${repository_name}:${target_image}
+docker push ${target_image}
+
+docker tag product-service:0.0.1 vrjayapriya/demo:tproduct-service
+docker push vrjayapriya/demo:tproduct-service
+
+***********CONTAINER OPS********************
+
+Running processes: 
+docker run <image> docker run -d <image> = run in disconnected / daemon mode 
+docker run --name="Some Name" = name the running instance 
+docker start <name> = will restart a closed / exited instance of the image 
+docker exec -it <name> <command> = run a command within a running container w ithout changing the state of the running container 
+docker stop <name> = stop a running container by using the name 
+
+***********Remove OPS ********************
+
+Cleaning up Docker: 
+docker rm containerid = removes an instance of the container that was run 
+docker rm `docker ps -a -q` = remove all stopped containers 
+docker rmi image-name = removes the docker image and its dependencies 
+
+ 
+Redirect port: 
+docker run -P = will redirect the container's port to a random port on the ho st machine's user port (port no 32,000+) 
+docker run -p 8080:80 = will redirect the container's port 80 to a port 8080 on the host machine's user port 
+docker port <container-name> = will list the port mapping information 
+ 
+Adding volume: 
+using the "-v" option mounts the local file system. eg to mount for an nginx on centos -v /home/user/www:/usr/share/nginx/html 
+ 
+Building a Docker file: 
+docker login --username=<username> Enter password docker push username/repo 
+
+***********CONTAINER EXECUTIONS********************
+Go Inside a container
+docker exec -t -i product-service sh
+ls to check all the directories
+
+By default, the image with latest tag gets pulled. To pull all images corresponding to all tags, use the following command:
+$ docker pull --all-tags centos 
+
+Docker run  = Docker Search + Docker pull
+creats and start container
+Docker run = Docker create + docker start
+
+***********CONTAINER LOGS********************
+Docker logs ${container_id}
+
+***********CONTAINER KILL / STOP********************
+docker kill - command will kill the container immediately. 
+docker stop - For a graceful shutdown of the container, you use the docker stop command. 
+
+When you are testing, you will usually use docker kill, and when you are in your production environments, you will want to use docker stop to ensure that you don't corrupt any data.
+
+***********CONTAINER RENAME********************
+docker rename <current_container_name> <new_container_name>
+
+************List of running processes inside the container******8
+docker top <container_name>
