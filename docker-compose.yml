@@ -1,0 +1,12 @@
+version: '2'
+services:
+    product-ui:
+        image: product-ui:0.0.1
+        ports: 
+          - "80:80"
+        container_name: product-ui    
+    product-service:
+        image: product-service:0.0.1
+        ports:
+            - "9090:8090"
+        container_name: product-service
