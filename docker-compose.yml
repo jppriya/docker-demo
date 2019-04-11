@@ -15,7 +15,7 @@ services:
         networks : 
           - demo_network
     book-service:
-         image: book-service
+         image: book-service:0.0.1
          ports:
          - "9001:8081"
          container_name: book-service
