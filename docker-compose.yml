@@ -15,10 +15,10 @@ services:
         networks : 
           - demo_network
     book-service:
-         image: book-services
+         image: book-service
          ports:
          - "9001:8081"
-         container_name: book-services
+         container_name: book-service
          networks : 
          - demo_network    
         
