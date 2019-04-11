@@ -1,0 +1,16 @@
+[
+	{
+		"bookId": "12345",
+		"bookName": "JAVA",
+		"bookAuthor": "RS Aggarwal",
+		"bookDescription": "ADAVANCED JAVA",
+		"bookCost": "$30"
+	},
+	{
+		"bookId": "54321",
+		"bookName": "Spring-Boot",
+		"bookAuthor": "Spring-Boot Author",
+		"bookDescription": "Spring Boot RAPID web Application framework",
+		"bookCost": "$100"
+	}
+]
