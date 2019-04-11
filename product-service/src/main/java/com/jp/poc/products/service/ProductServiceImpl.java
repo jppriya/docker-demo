@@ -2,8 +2,10 @@ package com.jp.poc.products.service;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -71,8 +73,30 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<BookDTO> getAllBooks() {
+	public List<ProductDto> getAllBooks() {
+		List<ProductDto> products = new ArrayList<>();
+		ProductDto product = new ProductDto();
 		List<BookDTO> books = integrationService.getAllBooks();
-		return books;
+		// transform bookdto TO product dto
+
+		if (CollectionUtils.isNotEmpty(books)) {
+			for (BookDTO bookDto : books) {
+				product = tranform(bookDto);
+				products.add(product);
+			}
+
+		}
+		return products;
+	}
+
+	private ProductDto tranform(BookDTO bookDto) {
+		ProductDto productDto = new ProductDto();
+		if (null != bookDto) {
+			productDto.setProductId(bookDto.getBookId());
+			productDto.setProductDesc(bookDto.getBookDescription());
+			productDto.setProductCost(bookDto.getBookCost());
+			productDto.setProductName(bookDto.getBookName());
+		}
+		return productDto;
 	}
 }

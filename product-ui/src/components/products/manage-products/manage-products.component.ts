@@ -24,14 +24,24 @@ export class ManageProductsComponent implements OnInit {
   }
 
   private getProducts() {
+    this.products = [];
     this.productsService.getProducts().subscribe(val => {
       this.products = val;
+      this.productsService.getBooks().subscribe((value) => {
+        if (Boolean(value)) {
+          this.products.push(value);
+        }
+      });
     }, (err) => {
     });
   }
 
   ngOnInit() {
-    // this.utilClass.isAuthenticated(this);
+    this.productsService.getBooks().subscribe((value) => {
+      if (Boolean(value)) {
+        this.products = this.products.concat(value);
+      }
+    });
   }
 
   editProductDetails(product: any) {

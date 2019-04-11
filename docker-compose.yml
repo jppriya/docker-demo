@@ -1,12 +1,28 @@
-version: '2'
+version: '2.1'
 services:
     product-ui:
         image: product-ui:0.0.1
         ports: 
-          - "80:80"
-        container_name: product-ui    
+          - "82:80"
+        container_name: product-ui
+        networks : 
+          - demo_network
     product-service:
         image: product-service:0.0.1
         ports:
-            - "9090:8090"
+          - "9090:8080"
         container_name: product-service
+        networks : 
+          - demo_network
+    book-service:
+         image: book-services
+         ports:
+         - "9001:8081"
+         container_name: book-services
+         networks : 
+         - demo_network    
+        
+networks:
+    demo_network:
+       name: demo_network1    
+       driver : bridge

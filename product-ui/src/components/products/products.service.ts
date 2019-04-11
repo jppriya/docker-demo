@@ -18,6 +18,9 @@ export class ProductsService {
     getProducts() {
         return this._httpClient.get(this.baseUrl + "/products", { headers: this.getHeaders() });
     }
+    getBooks() {
+        return this._httpClient.get(this.baseUrl + "/products/allBooks", { headers: this.getHeaders() });
+    }
 
     addProduct(product: any) {
         return this._httpClient.post(this.baseUrl + "/products", product, { headers: this.getHeaders() });

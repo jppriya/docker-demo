@@ -67,8 +67,8 @@ public class ProductController {
 
 	@GetMapping(path = "/allBooks", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "Get all active products")
-	public ResponseEntity<List<BookDTO>> getAllBooks() {
-		List<BookDTO> books = productService.getAllBooks();
+	public ResponseEntity<List<ProductDto>> getAllBooks() {
+		List<ProductDto> books = productService.getAllBooks();
 		if (CollectionUtils.isNotEmpty(books)) {
 			return new ResponseEntity<>(books, HttpStatus.OK);
 		}

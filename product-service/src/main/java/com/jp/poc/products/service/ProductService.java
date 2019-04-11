@@ -30,6 +30,6 @@ public interface ProductService {
 	 */
 	ProductDto getProduct(String productId, String productName);
 
-	List<BookDTO> getAllBooks();
+	List<ProductDto> getAllBooks();
 
 }
