@@ -21,9 +21,9 @@ docker run -it -p 9001:8000 --name product-service -d product-service:0.0.1
 
 docker stop product-service
 docker rm product-service
-docker rmi product-service:0.0.1
+docker rmi product-service
 docker build -t product-service:0.0.1 .
-docker run -p 9090:8090 --name product-service -d product-service:0.0.1
+docker run -p 9090:8080 --name product-service product-service:0.0.1 --link book-services
 
 ***********Product-UI**************
 
