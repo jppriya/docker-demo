@@ -5,16 +5,21 @@ import java.nio.charset.Charset;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.io.Resources;
+import com.jp.poc.products.model.BookDTO;
 import com.jp.poc.products.model.ProductDto;
 
 @Service
 public class ProductServiceImpl implements ProductService {
+
+	@Autowired
+	private IntegrationService integrationService;
 
 	@Override
 	public void saveProduct(ProductDto productDto) {
@@ -29,7 +34,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<ProductDto> getAllProducts() {
-		
+
 		List<ProductDto> product = getRequestListFromJson("product.json", ProductDto.class);
 		return product;
 	}
@@ -63,5 +68,11 @@ public class ProductServiceImpl implements ProductService {
 		}
 
 		return listValue;
+	}
+
+	@Override
+	public List<BookDTO> getAllBooks() {
+		List<BookDTO> books = integrationService.getAllBooks();
+		return books;
 	}
 }

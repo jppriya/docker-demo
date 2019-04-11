@@ -2,8 +2,8 @@ package com.jp.poc.products.service;
 
 import java.util.List;
 
+import com.jp.poc.products.model.BookDTO;
 import com.jp.poc.products.model.ProductDto;
-
 
 public interface ProductService {
 
@@ -14,7 +14,7 @@ public interface ProductService {
 
 	/**
 	 * @param productId
-	 * @param productName 
+	 * @param productName
 	 */
 	void deleteProduct(String productId, String productName);
 
@@ -25,9 +25,11 @@ public interface ProductService {
 
 	/**
 	 * @param productId
-	 * @param productName 
+	 * @param productName
 	 * @return
 	 */
 	ProductDto getProduct(String productId, String productName);
+
+	List<BookDTO> getAllBooks();
 
 }

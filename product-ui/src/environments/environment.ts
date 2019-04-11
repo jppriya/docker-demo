@@ -13,7 +13,7 @@ export const environment = {
   // rekognitionBucket: 'rekognition-pics',
   // albumName: "usercontent",
   bucketRegion: 'us-east-1',
-  baseUrl: 'http://localhost:9090/services'
+  baseUrl: 'http://localhost:8080/services'
   // baseUrl: 'https://2998acftz9.execute-api.us-east-1.amazonaws.com/Dev'
 
   // ddbTableName: 'LoginTrail',

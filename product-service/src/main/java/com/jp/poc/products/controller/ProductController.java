@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jp.poc.products.model.BookDTO;
 import com.jp.poc.products.model.ProductDto;
 import com.jp.poc.products.service.ProductService;
 
@@ -62,6 +63,16 @@ public class ProductController {
 			return new ResponseEntity<>(product, HttpStatus.OK);
 		}
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+
+	@GetMapping(path = "/allBooks", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ApiOperation(value = "Get all active products")
+	public ResponseEntity<List<BookDTO>> getAllBooks() {
+		List<BookDTO> books = productService.getAllBooks();
+		if (CollectionUtils.isNotEmpty(books)) {
+			return new ResponseEntity<>(books, HttpStatus.OK);
+		}
+		return null;
 	}
 
 }
