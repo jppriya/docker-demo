@@ -4,7 +4,7 @@ services:
         image: product-ui:0.0.1
         ports: 
           - "82:80"
-        container_name: product-ui
+        container_name: product-ui        
         networks : 
           - demo_network
     product-service:
@@ -12,6 +12,8 @@ services:
         ports:
           - "9090:8080"
         container_name: product-service
+        volumes:
+          - myVol:/my-logs
         networks : 
           - demo_network
     book-service:
@@ -19,6 +21,8 @@ services:
          ports:
          - "9001:8081"
          container_name: book-service
+         volumes:
+          - myVol:/my-logs
          networks : 
          - demo_network    
         
@@ -26,3 +30,5 @@ networks:
     demo_network:
        name: demo_network1    
        driver : bridge
+volumes:
+    myVol:

@@ -21,9 +21,21 @@ docker run -it -p 9001:8000 --name product-service -d product-service:0.0.1
 
 docker stop product-service
 docker rm product-service
-docker rmi product-service
+docker rmi product-service:0.0.1
 docker build -t product-service:0.0.1 .
+
+docker run -p 9090:8080 --name product-service product-service:0.0.1
 docker run -p 9090:8080 --name product-service product-service:0.0.1 --link book-services
+
+
+***********Book Service*************
+
+docker stop book-service
+docker rm book-service
+docker rmi book-service:0.0.1
+docker build -t book-service:0.0.1 .
+
+docker run -p 9001:8081 --name book-service -d book-service:0.0.1
 
 ***********Product-UI**************
 
@@ -96,3 +108,37 @@ docker rename <current_container_name> <new_container_name>
 
 ************List of running processes inside the container******8
 docker top <container_name>
+
+
+*****Remove all stopped container*************
+
+docker container prune
+
+docker container rm cc3f2ff51cab cd20b396a061 - Remove multiple container
+
+
+********get all stopped container*************
+docker ps -a  -f "status=exited"
+docker rm $(docker ps -a -q -f "status=exited")
+
+********Docker Volume********
+docker volume create myVol
+docker volume ls
+docker volume inspect myVoln
+docker volume rm myVol
+
+docker pull jenkins
+docker run -d --name myJenkins -p 8080:8080 -p 50000:50000 -v myVol:/var/jenkins_home jenkins
+
+User Name: jayapriya.r
+Password: nehrurajan
+
+*********Mount volumes with container*********
+
+docker run -d -p 9090:8080 -v myVol:/my-logs product-service --name product-service
+
+docker cp 236137d911b2:/my-logs .
+
+*********Dockere Network*************
+docker network create -d bridge {network_name}
+docker network rm {network_name}
