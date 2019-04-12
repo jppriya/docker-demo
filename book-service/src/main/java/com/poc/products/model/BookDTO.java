@@ -1,5 +1,7 @@
 package com.poc.products.model;
 
+import java.math.BigDecimal;
+
 public class BookDTO {
 
 	public String bookId;
@@ -10,7 +12,7 @@ public class BookDTO {
 
 	public String bookDescription;
 
-	public String bookCost;
+	public BigDecimal bookCost;
 
 	public String getBookId() {
 		return bookId;
@@ -44,11 +46,11 @@ public class BookDTO {
 		this.bookDescription = bookDescription;
 	}
 
-	public String getBookCost() {
+	public BigDecimal getBookCost() {
 		return bookCost;
 	}
 
-	public void setBookCost(String bookCost) {
+	public void setBookCost(BigDecimal bookCost) {
 		this.bookCost = bookCost;
 	}
 
