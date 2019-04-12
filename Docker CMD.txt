@@ -86,6 +86,7 @@ docker login --username=<username> Enter password docker push username/repo
 Go Inside a container
 docker exec -t -i product-service sh
 ls to check all the directories
+cat to open the files
 
 By default, the image with latest tag gets pulled. To pull all images corresponding to all tags, use the following command:
 $ docker pull --all-tags centos 
@@ -141,4 +142,7 @@ docker cp 236137d911b2:/my-logs .
 
 *********Dockere Network*************
 docker network create -d bridge {network_name}
-docker network rm {network_name}
+docker network rm {network_name
+
+******Docker history*********
+docker history <image_name>
